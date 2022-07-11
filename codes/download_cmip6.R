@@ -9,72 +9,75 @@ verbose = TRUE
 # Load fs package for easier dir creation
 library(fs)
 
-### MIROC6 ----
-if (verbose) {cat("Downloading MIROC6 files \n")}
-dir_create("raw/miroc")
-setwd("raw/miroc")
-
-system("wget http://esgf-data2.diasjp.net/thredds/fileServer/esg_dataroot/CMIP6/CMIP/MIROC/MIROC6/historical/r1i1p1f1/Omon/tos/gn/v20181212/tos_Omon_MIROC6_historical_r1i1p1f1_gn_195001-201412.nc")
-system("wget http://esgf-data2.diasjp.net/thredds/fileServer/esg_dataroot/CMIP6/ScenarioMIP/MIROC/MIROC6/ssp126/r1i1p1f1/Omon/tos/gn/v20190627/tos_Omon_MIROC6_ssp126_r1i1p1f1_gn_201501-210012.nc")
-system("wget http://esgf-data2.diasjp.net/thredds/fileServer/esg_dataroot/CMIP6/ScenarioMIP/MIROC/MIROC6/ssp245/r1i1p1f1/Omon/tos/gn/v20190627/tos_Omon_MIROC6_ssp245_r1i1p1f1_gn_201501-210012.nc")
-system("wget http://esgf-data2.diasjp.net/thredds/fileServer/esg_dataroot/CMIP6/ScenarioMIP/MIROC/MIROC6/ssp370/r1i1p1f1/Omon/tos/gn/v20190627/tos_Omon_MIROC6_ssp370_r1i1p1f1_gn_201501-210012.nc")
-system("wget http://esgf-data2.diasjp.net/thredds/fileServer/esg_dataroot/CMIP6/ScenarioMIP/MIROC/MIROC6/ssp585/r1i1p1f1/Omon/tos/gn/v20190627/tos_Omon_MIROC6_ssp585_r1i1p1f1_gn_201501-210012.nc")
-
-setwd("../..")
-
-### IPSL ----
-if (verbose) {cat("Downloading IPSL files \n")}
-dir_create("raw/ipsl")
-setwd("raw/ipsl")
-
-system("wget http://vesg.ipsl.upmc.fr/thredds/fileServer/cmip6/CMIP/IPSL/IPSL-CM6A-LR/historical/r1i1p1f1/Omon/tos/gn/v20180803/tos_Omon_IPSL-CM6A-LR_historical_r1i1p1f1_gn_185001-201412.nc")
-system("wget http://vesg.ipsl.upmc.fr/thredds/fileServer/cmip6/ScenarioMIP/IPSL/IPSL-CM6A-LR/ssp370/r1i1p1f1/Omon/tos/gn/v20190119/tos_Omon_IPSL-CM6A-LR_ssp370_r1i1p1f1_gn_201501-210012.nc")
-system("wget http://vesg.ipsl.upmc.fr/thredds/fileServer/cmip6/ScenarioMIP/IPSL/IPSL-CM6A-LR/ssp245/r1i1p1f1/Omon/tos/gn/v20190119/tos_Omon_IPSL-CM6A-LR_ssp245_r1i1p1f1_gn_201501-210012.nc")
-system("wget http://vesg.ipsl.upmc.fr/thredds/fileServer/cmip6/ScenarioMIP/IPSL/IPSL-CM6A-LR/ssp126/r1i1p1f1/Omon/tos/gn/v20190903/tos_Omon_IPSL-CM6A-LR_ssp126_r1i1p1f1_gn_201501-210012.nc")
-system("wget http://vesg.ipsl.upmc.fr/thredds/fileServer/cmip6/ScenarioMIP/IPSL/IPSL-CM6A-LR/ssp585/r1i1p1f1/Omon/tos/gn/v20190903/tos_Omon_IPSL-CM6A-LR_ssp585_r1i1p1f1_gn_201501-210012.nc")
-
-setwd("../..")
-
-### CESM ----
-if (verbose) {cat("Downloading CESM files \n")}
-dir_create("raw/cesm")
-setwd("raw/cesm")
-
-system("wget http://aims3.llnl.gov/thredds/fileServer/css03_data/CMIP6/CMIP/NCAR/CESM2-WACCM/historical/r1i1p1f1/Omon/tos/gn/v20190808/tos_Omon_CESM2-WACCM_historical_r1i1p1f1_gn_185001-201412.nc")
-system("wget https://esgf-data1.llnl.gov/thredds/fileServer/css03_data/CMIP6/ScenarioMIP/NCAR/CESM2-WACCM/ssp126/r1i1p1f1/Omon/tos/gn/v20210211/tos_Omon_CESM2-WACCM_ssp126_r1i1p1f1_gn_201501-210012.nc")
-system("wget http://aims3.llnl.gov/thredds/fileServer/css03_data/CMIP6/ScenarioMIP/NCAR/CESM2-WACCM/ssp245/r1i1p1f1/Omon/tos/gn/v20190815/tos_Omon_CESM2-WACCM_ssp245_r1i1p1f1_gn_201501-206412.nc")
-system("wget http://aims3.llnl.gov/thredds/fileServer/css03_data/CMIP6/ScenarioMIP/NCAR/CESM2-WACCM/ssp245/r1i1p1f1/Omon/tos/gn/v20190815/tos_Omon_CESM2-WACCM_ssp245_r1i1p1f1_gn_206501-210012.nc")
-system("wget http://aims3.llnl.gov/thredds/fileServer/css03_data/CMIP6/ScenarioMIP/NCAR/CESM2-WACCM/ssp370/r1i1p1f1/Omon/tos/gn/v20190815/tos_Omon_CESM2-WACCM_ssp370_r1i1p1f1_gn_201501-206412.nc")
-system("wget http://aims3.llnl.gov/thredds/fileServer/css03_data/CMIP6/ScenarioMIP/NCAR/CESM2-WACCM/ssp370/r1i1p1f1/Omon/tos/gn/v20190815/tos_Omon_CESM2-WACCM_ssp370_r1i1p1f1_gn_206501-210012.nc")
-system("wget https://esgf-data1.llnl.gov/thredds/fileServer/css03_data/CMIP6/ScenarioMIP/NCAR/CESM2-WACCM/ssp585/r1i1p1f1/Omon/tos/gn/v20200702/tos_Omon_CESM2-WACCM_ssp585_r1i1p1f1_gn_201501-210012.nc")
-
-setwd("../..")
-
-### GFDL ----
-if (verbose) {cat("Downloading GFDL files \n")}
-dir_create("raw/gfdl")
-setwd("raw/gfdl")
-
-system("wget http://esgdata.gfdl.noaa.gov/thredds/fileServer/gfdl_dataroot4/CMIP/NOAA-GFDL/GFDL-ESM4/historical/r1i1p1f1/Omon/tos/gn/v20190726/tos_Omon_GFDL-ESM4_historical_r1i1p1f1_gn_199001-200912.nc")
-system("wget http://esgdata.gfdl.noaa.gov/thredds/fileServer/gfdl_dataroot4/CMIP/NOAA-GFDL/GFDL-ESM4/historical/r1i1p1f1/Omon/tos/gn/v20190726/tos_Omon_GFDL-ESM4_historical_r1i1p1f1_gn_201001-201412.nc")
-system("wget http://esgdata.gfdl.noaa.gov/thredds/fileServer/gfdl_dataroot4/ScenarioMIP/NOAA-GFDL/GFDL-ESM4/ssp126/r1i1p1f1/Omon/tos/gn/v20180701/tos_Omon_GFDL-ESM4_ssp126_r1i1p1f1_gn_203501-205412.nc")
-system("wget http://esgdata.gfdl.noaa.gov/thredds/fileServer/gfdl_dataroot4/ScenarioMIP/NOAA-GFDL/GFDL-ESM4/ssp126/r1i1p1f1/Omon/tos/gn/v20180701/tos_Omon_GFDL-ESM4_ssp126_r1i1p1f1_gn_205501-207412.nc")
-system("wget http://esgdata.gfdl.noaa.gov/thredds/fileServer/gfdl_dataroot4/ScenarioMIP/NOAA-GFDL/GFDL-ESM4/ssp126/r1i1p1f1/Omon/tos/gn/v20180701/tos_Omon_GFDL-ESM4_ssp126_r1i1p1f1_gn_207501-209412.nc")
-system("wget http://esgdata.gfdl.noaa.gov/thredds/fileServer/gfdl_dataroot4/ScenarioMIP/NOAA-GFDL/GFDL-ESM4/ssp126/r1i1p1f1/Omon/tos/gn/v20180701/tos_Omon_GFDL-ESM4_ssp126_r1i1p1f1_gn_209501-210012.nc")
-system("wget http://esgdata.gfdl.noaa.gov/thredds/fileServer/gfdl_dataroot4/ScenarioMIP/NOAA-GFDL/GFDL-ESM4/ssp245/r1i1p1f1/Omon/tos/gn/v20180701/tos_Omon_GFDL-ESM4_ssp245_r1i1p1f1_gn_203501-205412.nc")
-system("wget http://esgdata.gfdl.noaa.gov/thredds/fileServer/gfdl_dataroot4/ScenarioMIP/NOAA-GFDL/GFDL-ESM4/ssp245/r1i1p1f1/Omon/tos/gn/v20180701/tos_Omon_GFDL-ESM4_ssp245_r1i1p1f1_gn_205501-207412.nc")
-system("wget http://esgdata.gfdl.noaa.gov/thredds/fileServer/gfdl_dataroot4/ScenarioMIP/NOAA-GFDL/GFDL-ESM4/ssp245/r1i1p1f1/Omon/tos/gn/v20180701/tos_Omon_GFDL-ESM4_ssp245_r1i1p1f1_gn_207501-209412.nc")
-system("wget http://esgdata.gfdl.noaa.gov/thredds/fileServer/gfdl_dataroot4/ScenarioMIP/NOAA-GFDL/GFDL-ESM4/ssp245/r1i1p1f1/Omon/tos/gn/v20180701/tos_Omon_GFDL-ESM4_ssp245_r1i1p1f1_gn_209501-210012.nc")
-system("wget http://esgdata.gfdl.noaa.gov/thredds/fileServer/gfdl_dataroot4/ScenarioMIP/NOAA-GFDL/GFDL-ESM4/ssp370/r1i1p1f1/Omon/tos/gn/v20180701/tos_Omon_GFDL-ESM4_ssp370_r1i1p1f1_gn_203501-205412.nc")
-system("wget http://esgdata.gfdl.noaa.gov/thredds/fileServer/gfdl_dataroot4/ScenarioMIP/NOAA-GFDL/GFDL-ESM4/ssp370/r1i1p1f1/Omon/tos/gn/v20180701/tos_Omon_GFDL-ESM4_ssp370_r1i1p1f1_gn_205501-207412.nc")
-system("wget http://esgdata.gfdl.noaa.gov/thredds/fileServer/gfdl_dataroot4/ScenarioMIP/NOAA-GFDL/GFDL-ESM4/ssp370/r1i1p1f1/Omon/tos/gn/v20180701/tos_Omon_GFDL-ESM4_ssp370_r1i1p1f1_gn_207501-209412.nc")
-system("wget http://esgdata.gfdl.noaa.gov/thredds/fileServer/gfdl_dataroot4/ScenarioMIP/NOAA-GFDL/GFDL-ESM4/ssp370/r1i1p1f1/Omon/tos/gn/v20180701/tos_Omon_GFDL-ESM4_ssp370_r1i1p1f1_gn_209501-210012.nc")
-system("wget http://esgdata.gfdl.noaa.gov/thredds/fileServer/gfdl_dataroot4/ScenarioMIP/NOAA-GFDL/GFDL-ESM4/ssp585/r1i1p1f1/Omon/tos/gn/v20180701/tos_Omon_GFDL-ESM4_ssp585_r1i1p1f1_gn_203501-205412.nc")
-system("wget http://esgdata.gfdl.noaa.gov/thredds/fileServer/gfdl_dataroot4/ScenarioMIP/NOAA-GFDL/GFDL-ESM4/ssp585/r1i1p1f1/Omon/tos/gn/v20180701/tos_Omon_GFDL-ESM4_ssp585_r1i1p1f1_gn_205501-207412.nc")
-system("wget http://esgdata.gfdl.noaa.gov/thredds/fileServer/gfdl_dataroot4/ScenarioMIP/NOAA-GFDL/GFDL-ESM4/ssp585/r1i1p1f1/Omon/tos/gn/v20180701/tos_Omon_GFDL-ESM4_ssp585_r1i1p1f1_gn_207501-209412.nc")
-system("wget http://esgdata.gfdl.noaa.gov/thredds/fileServer/gfdl_dataroot4/ScenarioMIP/NOAA-GFDL/GFDL-ESM4/ssp585/r1i1p1f1/Omon/tos/gn/v20180701/tos_Omon_GFDL-ESM4_ssp585_r1i1p1f1_gn_209501-210012.nc")
-
-setwd("../..")
-
-if (verbose) {cat("Downloads concluded. \n")}
-if (verbose) {print(list.files("raw", recursive = T))}
+# model = model for which data should be downloaded (one of MRI, CESM or GFDL)
+# others can be added - see details on the main code
+# outf = base output folder (files will be on 'outf/model')
+get.data <- function(model, outf = "raw"){
+        
+        model <- tolower(model)
+        
+        if ("cesm" %in% model) {
+                ### CESM ----
+                if (verbose) {cat("Downloading", model, "files \n")}
+                dir_create(paste(outf, model, sep = "/"))
+                setwd(paste(outf, model, sep = "/"))
+                
+                system("wget http://aims3.llnl.gov/thredds/fileServer/css03_data/CMIP6/CMIP/NCAR/CESM2-WACCM/historical/r1i1p1f1/Omon/tos/gn/v20190808/tos_Omon_CESM2-WACCM_historical_r1i1p1f1_gn_185001-201412.nc")
+                system("wget https://esgf-data1.llnl.gov/thredds/fileServer/css03_data/CMIP6/ScenarioMIP/NCAR/CESM2-WACCM/ssp126/r1i1p1f1/Omon/tos/gn/v20210211/tos_Omon_CESM2-WACCM_ssp126_r1i1p1f1_gn_201501-210012.nc")
+                system("wget http://aims3.llnl.gov/thredds/fileServer/css03_data/CMIP6/ScenarioMIP/NCAR/CESM2-WACCM/ssp245/r1i1p1f1/Omon/tos/gn/v20190815/tos_Omon_CESM2-WACCM_ssp245_r1i1p1f1_gn_201501-206412.nc")
+                system("wget http://aims3.llnl.gov/thredds/fileServer/css03_data/CMIP6/ScenarioMIP/NCAR/CESM2-WACCM/ssp245/r1i1p1f1/Omon/tos/gn/v20190815/tos_Omon_CESM2-WACCM_ssp245_r1i1p1f1_gn_206501-210012.nc")
+                system("wget http://aims3.llnl.gov/thredds/fileServer/css03_data/CMIP6/ScenarioMIP/NCAR/CESM2-WACCM/ssp370/r1i1p1f1/Omon/tos/gn/v20190815/tos_Omon_CESM2-WACCM_ssp370_r1i1p1f1_gn_201501-206412.nc")
+                system("wget http://aims3.llnl.gov/thredds/fileServer/css03_data/CMIP6/ScenarioMIP/NCAR/CESM2-WACCM/ssp370/r1i1p1f1/Omon/tos/gn/v20190815/tos_Omon_CESM2-WACCM_ssp370_r1i1p1f1_gn_206501-210012.nc")
+                system("wget https://esgf-data1.llnl.gov/thredds/fileServer/css03_data/CMIP6/ScenarioMIP/NCAR/CESM2-WACCM/ssp585/r1i1p1f1/Omon/tos/gn/v20200702/tos_Omon_CESM2-WACCM_ssp585_r1i1p1f1_gn_201501-210012.nc")
+                
+                setwd("../..")
+        }
+        
+        if ("gfdl" %in% model) {
+                if (verbose) {cat("Downloading", model, "files \n")}
+                dir_create(paste(outf, model, sep = "/"))
+                setwd(paste(outf, model, sep = "/"))
+                
+                system("wget http://esgdata.gfdl.noaa.gov/thredds/fileServer/gfdl_dataroot4/CMIP/NOAA-GFDL/GFDL-ESM4/historical/r1i1p1f1/Omon/tos/gn/v20190726/tos_Omon_GFDL-ESM4_historical_r1i1p1f1_gn_199001-200912.nc")
+                system("wget http://esgdata.gfdl.noaa.gov/thredds/fileServer/gfdl_dataroot4/CMIP/NOAA-GFDL/GFDL-ESM4/historical/r1i1p1f1/Omon/tos/gn/v20190726/tos_Omon_GFDL-ESM4_historical_r1i1p1f1_gn_201001-201412.nc")
+                system("wget http://esgdata.gfdl.noaa.gov/thredds/fileServer/gfdl_dataroot4/ScenarioMIP/NOAA-GFDL/GFDL-ESM4/ssp126/r1i1p1f1/Omon/tos/gn/v20180701/tos_Omon_GFDL-ESM4_ssp126_r1i1p1f1_gn_203501-205412.nc")
+                system("wget http://esgdata.gfdl.noaa.gov/thredds/fileServer/gfdl_dataroot4/ScenarioMIP/NOAA-GFDL/GFDL-ESM4/ssp126/r1i1p1f1/Omon/tos/gn/v20180701/tos_Omon_GFDL-ESM4_ssp126_r1i1p1f1_gn_205501-207412.nc")
+                system("wget http://esgdata.gfdl.noaa.gov/thredds/fileServer/gfdl_dataroot4/ScenarioMIP/NOAA-GFDL/GFDL-ESM4/ssp126/r1i1p1f1/Omon/tos/gn/v20180701/tos_Omon_GFDL-ESM4_ssp126_r1i1p1f1_gn_207501-209412.nc")
+                system("wget http://esgdata.gfdl.noaa.gov/thredds/fileServer/gfdl_dataroot4/ScenarioMIP/NOAA-GFDL/GFDL-ESM4/ssp126/r1i1p1f1/Omon/tos/gn/v20180701/tos_Omon_GFDL-ESM4_ssp126_r1i1p1f1_gn_209501-210012.nc")
+                system("wget http://esgdata.gfdl.noaa.gov/thredds/fileServer/gfdl_dataroot4/ScenarioMIP/NOAA-GFDL/GFDL-ESM4/ssp245/r1i1p1f1/Omon/tos/gn/v20180701/tos_Omon_GFDL-ESM4_ssp245_r1i1p1f1_gn_203501-205412.nc")
+                system("wget http://esgdata.gfdl.noaa.gov/thredds/fileServer/gfdl_dataroot4/ScenarioMIP/NOAA-GFDL/GFDL-ESM4/ssp245/r1i1p1f1/Omon/tos/gn/v20180701/tos_Omon_GFDL-ESM4_ssp245_r1i1p1f1_gn_205501-207412.nc")
+                system("wget http://esgdata.gfdl.noaa.gov/thredds/fileServer/gfdl_dataroot4/ScenarioMIP/NOAA-GFDL/GFDL-ESM4/ssp245/r1i1p1f1/Omon/tos/gn/v20180701/tos_Omon_GFDL-ESM4_ssp245_r1i1p1f1_gn_207501-209412.nc")
+                system("wget http://esgdata.gfdl.noaa.gov/thredds/fileServer/gfdl_dataroot4/ScenarioMIP/NOAA-GFDL/GFDL-ESM4/ssp245/r1i1p1f1/Omon/tos/gn/v20180701/tos_Omon_GFDL-ESM4_ssp245_r1i1p1f1_gn_209501-210012.nc")
+                system("wget http://esgdata.gfdl.noaa.gov/thredds/fileServer/gfdl_dataroot4/ScenarioMIP/NOAA-GFDL/GFDL-ESM4/ssp370/r1i1p1f1/Omon/tos/gn/v20180701/tos_Omon_GFDL-ESM4_ssp370_r1i1p1f1_gn_203501-205412.nc")
+                system("wget http://esgdata.gfdl.noaa.gov/thredds/fileServer/gfdl_dataroot4/ScenarioMIP/NOAA-GFDL/GFDL-ESM4/ssp370/r1i1p1f1/Omon/tos/gn/v20180701/tos_Omon_GFDL-ESM4_ssp370_r1i1p1f1_gn_205501-207412.nc")
+                system("wget http://esgdata.gfdl.noaa.gov/thredds/fileServer/gfdl_dataroot4/ScenarioMIP/NOAA-GFDL/GFDL-ESM4/ssp370/r1i1p1f1/Omon/tos/gn/v20180701/tos_Omon_GFDL-ESM4_ssp370_r1i1p1f1_gn_207501-209412.nc")
+                system("wget http://esgdata.gfdl.noaa.gov/thredds/fileServer/gfdl_dataroot4/ScenarioMIP/NOAA-GFDL/GFDL-ESM4/ssp370/r1i1p1f1/Omon/tos/gn/v20180701/tos_Omon_GFDL-ESM4_ssp370_r1i1p1f1_gn_209501-210012.nc")
+                system("wget http://esgdata.gfdl.noaa.gov/thredds/fileServer/gfdl_dataroot4/ScenarioMIP/NOAA-GFDL/GFDL-ESM4/ssp585/r1i1p1f1/Omon/tos/gn/v20180701/tos_Omon_GFDL-ESM4_ssp585_r1i1p1f1_gn_203501-205412.nc")
+                system("wget http://esgdata.gfdl.noaa.gov/thredds/fileServer/gfdl_dataroot4/ScenarioMIP/NOAA-GFDL/GFDL-ESM4/ssp585/r1i1p1f1/Omon/tos/gn/v20180701/tos_Omon_GFDL-ESM4_ssp585_r1i1p1f1_gn_205501-207412.nc")
+                system("wget http://esgdata.gfdl.noaa.gov/thredds/fileServer/gfdl_dataroot4/ScenarioMIP/NOAA-GFDL/GFDL-ESM4/ssp585/r1i1p1f1/Omon/tos/gn/v20180701/tos_Omon_GFDL-ESM4_ssp585_r1i1p1f1_gn_207501-209412.nc")
+                system("wget http://esgdata.gfdl.noaa.gov/thredds/fileServer/gfdl_dataroot4/ScenarioMIP/NOAA-GFDL/GFDL-ESM4/ssp585/r1i1p1f1/Omon/tos/gn/v20180701/tos_Omon_GFDL-ESM4_ssp585_r1i1p1f1_gn_209501-210012.nc")
+                
+                setwd("../..")
+        }
+        
+        if ("mri" %in% model) {
+                if (verbose) {cat("Downloading", model, "files \n")}
+                dir_create(paste(outf, model, sep = "/"))
+                setwd(paste(outf, model, sep = "/"))
+                
+                system("wget http://esgf-data2.diasjp.net/thredds/fileServer/esg_dataroot/CMIP6/CMIP/MRI/MRI-ESM2-0/historical/r1i1p1f1/Omon/tos/gn/v20190904/tos_Omon_MRI-ESM2-0_historical_r1i1p1f1_gn_185001-201412.nc")
+                system("wget http://esgf-data2.diasjp.net/thredds/fileServer/esg_dataroot/CMIP6/ScenarioMIP/MRI/MRI-ESM2-0/ssp126/r1i1p1f1/Omon/tos/gn/v20191108/tos_Omon_MRI-ESM2-0_ssp126_r1i1p1f1_gn_201501-210012.nc")
+                system("wget http://esgf-data2.diasjp.net/thredds/fileServer/esg_dataroot/CMIP6/ScenarioMIP/MRI/MRI-ESM2-0/ssp245/r1i1p1f1/Omon/tos/gn/v20190904/tos_Omon_MRI-ESM2-0_ssp245_r1i1p1f1_gn_201501-210012.nc")
+                system("wget http://esgf-data2.diasjp.net/thredds/fileServer/esg_dataroot/CMIP6/ScenarioMIP/MRI/MRI-ESM2-0/ssp370/r1i1p1f1/Omon/tos/gn/v20190904/tos_Omon_MRI-ESM2-0_ssp370_r1i1p1f1_gn_201501-210012.nc")
+                system("wget http://esgf-data2.diasjp.net/thredds/fileServer/esg_dataroot/CMIP6/ScenarioMIP/MRI/MRI-ESM2-0/ssp585/r1i1p1f1/Omon/tos/gn/v20191108/tos_Omon_MRI-ESM2-0_ssp585_r1i1p1f1_gn_201501-210012.nc")
+                
+                setwd("../..")
+        }
+        
+        # If you want, you can add other models following the same pattern
+        # links to files can be found in https://esgf-node.llnl.gov/search/cmip6/
+        
+        if (verbose) {cat("Downloads concluded. \n")}
+        if (verbose) {print(list.files("raw", recursive = T))}
+        
+}
