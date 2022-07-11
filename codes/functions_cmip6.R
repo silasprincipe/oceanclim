@@ -4,7 +4,7 @@
 ### Prepare CMIP6 files ###
 
 # Creates a function to prepare the historical data using CDO
-prepare.hist <- function(folder, model,
+prepare.hist <- function(model, folder = NULL,
                          lonlat = "-180,180,-90,90",
                          remap = NULL,
                          reso = "low",
@@ -12,6 +12,11 @@ prepare.hist <- function(folder, model,
         
         if (is.null(reso)){
                 reso <- "std"
+        }
+  
+        if (is.null(folder)){
+                folder <- model
+                dir_create(folder)
         }
         
         rfiles <- list.files(folder)
@@ -71,7 +76,7 @@ prepare.hist <- function(folder, model,
 }
 
 # And also for the future
-prepare.fut <- function(folder, model,
+prepare.fut <- function(model, folder = NULL,
                         lonlat = "-180,180,-90,90",
                         remap = NULL,
                         reso = "low",
@@ -99,6 +104,11 @@ prepare.fut <- function(folder, model,
                 reso <- "std"
         }
         
+        if (is.null(folder)){
+                folder <- model
+                dir_create(folder)
+        }
+  
         cat("Resolution:", reso.print, "| Remap size:", remap, "\n")
         
         upf <- getwd()
