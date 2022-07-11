@@ -4,7 +4,9 @@
 ### Prepare CMIP6 files ###
 
 # Creates a function to prepare the historical data using CDO
-prepare.hist <- function(model, folder = NULL,
+prepare.hist <- function(model,
+                         folder = NULL,
+                         outf = NULL,
                          lonlat = "-180,180,-90,90",
                          remap = NULL,
                          reso = "low",
@@ -13,18 +15,23 @@ prepare.hist <- function(model, folder = NULL,
         if (is.null(reso)){
                 reso <- "std"
         }
-  
-        if (is.null(folder)){
-                folder <- model
-                dir_create(folder)
-        }
-        
-        rfiles <- list.files(folder)
         
         mod <- tolower(model)
+        
+        if (is.null(folder)){
+                folder <- paste0("raw/", mod)
+        }
+        
+        if (is.null(outf)) {
+                outf <- mod
+                dir_create(outf)
+        }
+        
+        upfiles <- list.files(outf)
+        
         fnam <- paste0("tos_hist_", reso, "_", mod,".nc")                       
         
-        if(!fnam %in% rfiles){
+        if(!fnam %in% upfiles){
                 if (is.null(remap)){
                         if (is.null(reso)){
                                 stop("One of resolution or remap should be given.")
@@ -65,6 +72,9 @@ prepare.hist <- function(model, folder = NULL,
                 system(paste0("cdo -sellonlatbox,", lonlat, " -remapbil,r", remap,
                               " -selyear,", years, " -selname,tos ", layer, " tos_hist_", reso, "_", mod,".nc"))
                 
+                file_move(paste0("tos_hist_", reso, "_", mod,".nc"),
+                          paste0(upf, "/", outf))
+                
                 if (grepl("temp", layer)) {
                         unlink(paste0("temp_", "hist", "_", mod, ".nc"))
                 }
@@ -76,7 +86,9 @@ prepare.hist <- function(model, folder = NULL,
 }
 
 # And also for the future
-prepare.fut <- function(model, folder = NULL,
+prepare.fut <- function(model,
+                        folder = NULL,
+                        outf = NULL,
                         lonlat = "-180,180,-90,90",
                         remap = NULL,
                         reso = "low",
@@ -104,31 +116,35 @@ prepare.fut <- function(model, folder = NULL,
                 reso <- "std"
         }
         
-        if (is.null(folder)){
-                folder <- model
-                dir_create(folder)
-        }
-  
         cat("Resolution:", reso.print, "| Remap size:", remap, "\n")
+        
+        mod <- tolower(model)
+        
+        if (is.null(folder)){
+                folder <- paste0("raw/", mod)
+        }
+        
+        if (is.null(outf)) {
+                outf <- mod
+                dir_create(outf)
+        }
+        
+        upfiles <- list.files(outf)
         
         upf <- getwd()
         setwd(folder)
-        
-        mod <- tolower(model)
         
         layer <- list.files(pattern = toupper(model))
         layer <- layer[-grep("historical", layer)]
         
         for (i in 1:4){
                 
-                rfiles <- list.files()
-                
                 ssp <- paste0("ssp", c(126, 245, 370, 585))[i]
                 
                 fnam <- c(paste0("tos_", ssp, "_dec50_", reso ,"_", mod, ".nc"),
                           paste0("tos_", ssp, "_dec100_", reso ,"_", mod, ".nc"))
                 
-                if (any(!fnam %in% rfiles)){
+                if (any(!fnam %in% upfiles)){
                         
                         sel.layers <- layer[grep(ssp, layer)]
                         
@@ -151,6 +167,11 @@ prepare.fut <- function(model, folder = NULL,
                                 )
                         ))
                         
+                        file_move(paste0("tos_",
+                                         ssp,
+                                         "_dec50_", reso ,"_", mod, ".nc"),
+                                  paste0(upf, "/", outf))
+                        
                         system(paste0(
                                 "cdo",
                                 " -sellonlatbox,", lonlat, " -remapbil,r", remap, " -selyear,", years[2], 
@@ -162,6 +183,11 @@ prepare.fut <- function(model, folder = NULL,
                                         "_dec100_", reso ,"_", mod, ".nc"
                                 )
                         ))
+                        
+                        file_move(paste0("tos_",
+                                         ssp,
+                                         "_dec100_", reso ,"_", mod, ".nc"),
+                                  paste0(upf, "/", outf))
                         
                         if (grepl("temp", sel.layers)) {
                                 unlink(sel.layers)
