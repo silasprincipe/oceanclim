@@ -118,7 +118,7 @@ prepare.fut <- function(folder, model,
                 fnam <- c(paste0("tos_", ssp, "_dec50_", reso ,"_", mod, ".nc"),
                           paste0("tos_", ssp, "_dec100_", reso ,"_", mod, ".nc"))
                 
-                if (any(!fnam %in% upfiles)){
+                if (any(!fnam %in% rfiles)){
                         
                         sel.layers <- layer[grep(ssp, layer)]
                         
@@ -140,10 +140,6 @@ prepare.fut <- function(folder, model,
                                         "_dec50_", reso ,"_", mod, ".nc"
                                 )
                         ))
-                        
-                        if (upload) {
-                                up.drive(paste0("tos_", ssp, "_dec50_", reso ,"_", mod, ".nc"))
-                        }
                         
                         system(paste0(
                                 "cdo",
