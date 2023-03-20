@@ -37,3 +37,12 @@ vignettes/*.pdf
 
 # R Environment Variables
 .Renviron
+
+^.*\.Rproj$
+^\.Rproj\.user$
+
+# Folder with raw and ready files
+raw/
+ready_layers/
+aux_data/
+.Rproj.user
